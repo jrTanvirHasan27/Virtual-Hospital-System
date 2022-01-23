@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    View Feedback!
+{% endblock %}
+
+{% block content %}
+
+    <div class="container div-f">
+        <h3 class="text-center">
+            View Feedback of the Appointed Patients
+        </h3>
+         <table class="table table-striped">
+        <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">Patient Id</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Feedback</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for patient in appointed_patient %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.username }}</td>
+            {% if patient.feedback != None %}
+                <td>{{ patient.feedback }}</td>
+            {% else %}
+                <td> No feedback added. </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    </div>
+
+
+<style>
+      .div-f {
+      background-color: #FFFFFF;
+      color: black
+      }
+</style>
+{% endblock %}

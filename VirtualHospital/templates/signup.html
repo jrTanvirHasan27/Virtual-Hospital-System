@@ -1,0 +1,56 @@
+{% extends 'base-2.html' %}
+
+{% block title %}
+    Sign Up!
+{% endblock %}
+
+{% block content %}
+        <div class="container p-4" style="font-family:Times New Roman; text-align: center">
+            <form method="POST" class="for-register" style="color:black">
+                {{ form.hidden_tag() }}
+
+                <h4> {{ form.username.label() }} {{ form.username(class="form-control", placeholder="User Name") }} </h4>
+
+                <h4> {{ form.email_address.label() }} {{ form.email_address(class="form-control", placeholder="Email Address") }} </h4>
+
+                <h4> {{ form.p_num.label() }} {{ form.p_num(class="form-control", placeholder="Phone Number") }} </h4>
+
+                <h4> {{ form.age.label() }} {{ form.age(class="form-control", placeholder="Age") }} </h4>
+
+                <h4> {{ form.password1.label() }} {{ form.password1(class="form-control", placeholder="Password") }} </h4>
+
+                <h4> {{ form.password2.label() }} {{ form.password2(class="form-control", placeholder="Confirm Password") }} </h4>
+
+                <br>
+                {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+            </form>
+        </div>
+
+            <div class="card-footer text-muted" style="text-align:center">
+                    <h4 id="block-1">
+                        Already have an account?
+                    </h4>
+                    <div class="dropdown show" id="block-2">
+
+                        <a class="btn btn-lg btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sign in</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      	                    <a class="dropdown-item" href="{{ url_for('signin_doctor_page') }}">Sign in as a Doctor</a>
+      	                    <a class="dropdown-item" href="{{ url_for('signin_patient_page') }}">Sign in as a Patient</a>
+                        </div>
+                    </div>
+                     <h4 id="block-3">
+                        now
+                    </h4>
+            </div>
+
+<style>
+    .container {
+       max-width: 40%;
+}
+#block-1, #block-2, #block-3
+{
+    display:inline;
+}
+</style>
+
+{% endblock %}

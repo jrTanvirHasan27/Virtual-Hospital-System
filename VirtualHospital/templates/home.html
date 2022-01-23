@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home Page!
+{% endblock %}
+
+{% block content %}
+
+<div class="container div-f">
+        <div class="container div-g">
+            <div>
+            <h1 class="text-center">Welcome to<br> Jahangir Basar Memorial Virtual Hospital</h1>
+                <br>
+        </div>
+        <div style="text-align:center">
+                <button type="button" class="btn btn-lg btn-outline-success sticky-top">Appointment Information</button>
+        </div>
+            {% if current_user.owner != None %}
+                <div class="container" style="font-family:Times New Roman">
+                    <br>
+                    <h4><strong>Appointed Doctor Name:</strong> {{ current_user.owner.username }}</h4>
+                </div>
+            {% else %}
+                <div class="container" style="font-family:Times New Roman">
+                        <h4>You do not have any appointment!</h4>
+                </div>
+            {% endif %}
+
+            <div class="container">
+                <br>
+                <br>
+
+                <div>
+                    <img height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/918188533120892958/right-arrow.png">
+                    <a href="{{ url_for('Appointment_Doctors') }}">
+                          <button class="btn-outline-light" style="color: rgb(42, 39, 39); height: 50px; font-size:28px; width:340px">
+                                      <b>Take An Appointment</b></button>
+                     </a>
+
+                    <!-- <button type="button" class="btn btn-primary btn-lg"> <a href="{{ url_for('Appointment_Doctors') }}">Take an Appointment</a> </button> -->
+                </div>
+
+                <br>
+
+
+                <div>
+                    <img height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/918188533120892958/right-arrow.png">
+                    <a href="{{ url_for('appointment_information') }}">
+                          <button class="btn-outline-light" style="color: rgb(42, 39, 39); height: 50px; font-size:28px; width:300px">
+                                      <b>Appointment Info</b></button>
+                     </a>
+
+                   <!-- <button type="button" class="btn btn-primary btn-lg">Appointment Information</button> -->
+                </div>
+
+                <br>
+
+
+                <div>
+                    <img height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/918188533120892958/right-arrow.png">
+                     <a href="{{ url_for('Give_feedback') }}">
+                          <button class="btn-outline-light" style="color: rgb(42, 39, 39); height: 50px; font-size:28px; width:260px">
+                                      <b>Give Feedback</b></button>
+                     </a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <p style="padding:40px"></p>
+</div>
+
+<style>
+      .div-f {
+      background-color: #FFFFFF;
+      color: black
+      }
+.div-g {
+       max-width: 95%;
+}
+#block-1, #block-2
+{
+    display:inline;
+}
+</style>
+
+{% endblock %}

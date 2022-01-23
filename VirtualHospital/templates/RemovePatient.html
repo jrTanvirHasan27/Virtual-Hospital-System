@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Remove Appointed Patient!
+{% endblock %}
+
+{% block content %}
+
+<div class="container div-g">
+    <h2 style="text-align:center">This page is for removing appointed patients!</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">Patient ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Symptoms</th>
+            <th scope="col">Medicine</th>
+            <th>Dose Per Day</th>
+            <th scope="col">Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for patient in appointed_patients %}
+        {% include 'includes/RemovePatient_modals.html' %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.username }}</td>
+            <td>{{ patient.email_address }}</td>
+            <td>{{ patient.symptom }}</td>
+            <td>{{ patient.medication }}</td>
+            <td>{{ patient.dose }}</td>
+            <td>
+                <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-RemovePatientConfirm-{{ patient.id }}">Remove Patient</button>
+            </td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+<style>
+      .div-g {
+      background-color: #FFFFFF;
+      color: black
+      }
+</style>
+
+{% endblock %}

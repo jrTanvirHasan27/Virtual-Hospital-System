@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home Page for doctors!
+{% endblock %}
+
+{% block content %}
+
+<div class="container div-f" style="font-family:Times New Roman">
+        <div class="container div-g">
+            <div>
+                  <h1 style="text-align:center">Welcome to<br> Jahangir Basar Memorial Virtual Hospital</h1>
+            </div>
+
+            <div class="container">
+                <br>
+                <br>
+
+                <div>
+                    <img height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/918188533120892958/right-arrow.png">
+
+                    <a href="{{ url_for('Patient_List') }}">
+                          <button class="btn-outline-light" style="color: rgb(42, 39, 39); height: 50px; font-size:28px; width:180px">
+                                      <b>Patient List</b></button>
+                     </a>
+
+                </div>
+
+                <br>
+
+
+                <div>
+                    <img height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/918188533120892958/right-arrow.png">
+
+                    <a href="{{ url_for('RemovePatient') }}">
+                          <button class="btn-outline-light" style="color: rgb(42, 39, 39); height: 50px; font-size:28px; width:220px">
+                                      <b>Remove Patient</b></button>
+                     </a>
+
+                </div>
+
+                <br>
+
+
+                <div>
+                    <img height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/918188533120892958/right-arrow.png">
+
+                    <a href="{{ url_for('Update_medication') }}">
+                          <button class="btn-outline-light" style="color: rgb(42, 39, 39); height: 50px; font-size:28px; width:265px">
+                                      <b>Update Medication</b></button>
+                     </a>
+
+                </div>
+
+                 <br>
+
+                <div>
+                    <img height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/918188533120892958/right-arrow.png">
+
+                    <a href="{{ url_for('ViewFeedback_page') }}">
+                          <button class="btn-outline-light" style="color: rgb(42, 39, 39); height: 50px; font-size:28px; width:230px">
+                                      <b>Check Feedback</b></button>
+                     </a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <p style="padding:40px"></p>
+</div>
+
+<style>
+      .div-f {
+      background-color: #FFFFFF;
+      color: black
+      }
+.div-g {
+       max-width: 95%;
+}
+
+</style>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   Profile Page!
+{% endblock %}
+
+{% block content %}
+<div class="container div-f border border-dark">
+   <br>
+         <div class="container div-h">
+
+            <div class="container">
+               <div class="row">
+                  <div class="col-5">
+                     <p style="padding: 45px"></p>
+                     <img src="https://media.discordapp.net/attachments/745242546283741224/919187906625671188/download.jpg">
+                     <h2 style="color: green; font-weight: bold">Dr. {{ current_user.username }}</h2>
+                     <h5>{{ current_user.doctor_type }}</h5>
+                     <h5 style="font-weight: bold"> JVMH Hospital</h5>
+                  </div>
+                  <div class="col-5">
+                     <u>
+                        <b style="color: blue; font-size: 40px"> Profile </b>
+                        <br>
+                     </u>
+                     <h1 style="color: green; font-weight: bold">Dr. {{ current_user.username }}</h1>
+                     <h5>{{ current_user.qualification }}</h5>
+                     <br>
+
+                     <p><b>Experience: </b>{{ current_user.experience }}</p>
+                     <p><b>Skilled Language: </b>{{ current_user.language }}</p>
+                     <p>
+                        <b>Speciality:</b>
+                        <br>
+                        {{current_user.clas}}
+                     </p>
+                     <br>
+
+                     <p><b>Contact On:</b></p>
+                     <p><b>Phone Number: </b>{{ current_user.phone_number}}</p>
+                     <p><b>Email Address: </b>{{ current_user.email }}</p>
+                     <br>
+
+
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+   <br><br>
+</div>
+
+<style>
+.div-f {
+   background-color: white;
+   background-height: cover;
+   color: black;
+   }
+   p{
+   font-size: 20px;
+}
+ .div-h{
+   max-width: 90%;
+}
+</style>
+{% endblock %}

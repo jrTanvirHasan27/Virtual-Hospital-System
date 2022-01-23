@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Selecting Patient!
+{% endblock %}
+
+{% block content %}
+    <div class="container div-f">
+
+        <h1 class="text-center">
+            Select patient for updating Medication!
+        </h1>
+
+        <form method="POST" action="{{ url_for('Update_medication') }}">
+            {{ selectForm.hidden_tag() }}
+                 <select name="patient_select" style="font-size:150%" class="selectpicker form-control form-select form-select-lg" aria-label=".form-select-lg example">
+                          <option selected>Select an appointed patient</option>
+
+                           {% for patient in patientList %}
+                                 <option value="{{ patient.username }}">{{ patient.username }}</option>
+                           {% endfor %}
+
+                  </select>
+                <div class="container">
+                    <h4> {{ selectForm.medication.label() }}: {{ selectForm.medication(class="selectForm-control", placeholder="Medicine", size=80) }} </h4>
+
+                    <h4> {{ selectForm.dose.label() }}: {{ selectForm.dose(class="selectForm-control", placeholder="Dose", size=86) }} </h4>
+                </div>
+
+               <h3 class="text-center"> {{ selectForm.submit(class="btn btn-block btn-lg btn-success") }} </h3>
+        </form>
+
+
+    </div>
+
+<style>
+          .div-f {
+      background-color: #FFFFFF;
+      color: black
+   }
+   .div-a{
+    max-width: 80%;
+}
+
+select {
+        width: 1080%;
+        margin: 10px;
+        height: 52px;
+    }
+select:focus {
+        min-width: 1090px;
+        width: auto;
+    }
+
+</style>
+{% endblock %}

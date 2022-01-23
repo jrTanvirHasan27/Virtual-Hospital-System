@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+      Profile Page!
+{% endblock %}
+
+{% block content %}
+<div class="container div-f border border-dark">
+   <br>
+   <div class="container">
+      <div class="row">
+         <div class="col-5">
+            <p style="padding: 10px"></p>
+            <div class="text-center">
+  <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png" class="rounded" alt="..." height="300px" width="350px">
+</div>
+
+         </div>
+         <div class="col-5">
+            <u>
+               <b style="color: blue"> <h1>Profile</h1> </b>
+            </u>
+            <h1 style="color: green; font-weight: bold">{{ current_user.username }}</h1>
+            <p><b>Age: </b>{{ current_user.age }}</p>
+            <p><b>Patient ID: </b>{{ current_user.id }}</p>
+            <br>
+
+            <p style="font-weight: bold"><u>Contact On:</u>
+                <br>
+                <p><b>Phone Number: </b>{{ current_user.p_num }}</p>
+                <p><b>Email Address: </b>{{ current_user.email_address }}
+             </p>
+
+            <br>
+
+         </div>
+      </div>
+   </div>
+   <br><br>
+</div>
+<style>
+   .div-f {
+   background-color: white;
+   background-height: cover;
+   color: black;
+   }
+   p{
+   font-size: 22px;
+   }
+</style>
+{% endblock %}

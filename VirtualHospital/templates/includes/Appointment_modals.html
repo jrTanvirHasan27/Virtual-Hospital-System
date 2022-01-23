@@ -1,0 +1,42 @@
+<!-- Take Appointment -->
+
+<div class="modal fade" id ="Modal-AppointmentConfirm-{{ doctor.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">
+                    {{ doctor.username }}
+                </h5>
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    {{ appointment_form.hidden_tag() }}
+
+                    <h4 class="text-center">
+                        Are you sure you want to take appointment to {{ doctor.username }} for {{ doctor.priceOfAppointment }}৳ ?
+                    </h4>
+
+                    <br>
+                    <h6 class="text-center">
+                        By clicking take appointment button, you will take appointment to the doctor.
+                    </h6>
+                    <input id="appointed_doctor" name="appointed_doctor" type="hidden" value="{{doctor.username}}">
+                    <br>
+                    {{ appointment_form.submit(class="btn btn-outline-success btn-block") }}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

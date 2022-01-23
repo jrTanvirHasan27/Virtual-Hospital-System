@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Appointment!
+{% endblock %}
+
+{% block content %}
+
+<div class="container div-g">
+    <h2 style="text-align:center">This page is for showing available doctors</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">Doctors Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Specialty</th>
+            <th scope="col">Appointment payment</th>
+            <th scope="col">Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for doctor in doctors %}
+        {% include 'includes/Appointment_modals.html' %}
+        <tr>
+            <td>{{ doctor.id }}</td>
+            <td>{{ doctor.username }}</td>
+            <td>{{ doctor.clas }}</td>
+            <td>{{ doctor.priceOfAppointment }} ৳</td>
+            <td>
+                <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-AppointmentConfirm-{{ doctor.id }}">Take Appointment</button>
+            </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+<style>
+      .div-g {
+      background-color: #FFFFFF;
+      color: black
+      }
+</style>
+
+{% endblock %}

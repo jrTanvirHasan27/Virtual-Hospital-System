@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags     -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container p-2">
+        <div class="text-left">
+                <img class="border border-secondary" height="150" width="150" src="https://media.discordapp.net/attachments/745242546283741224/912338844777598996/Greedn_and_Blue_Minimal_Leaf_Health_Hospital_Center_.png?width=676&height=676">
+        </div>
+        <div class="text-right">
+            <p>
+                <a class="navbar-link" href="{{ url_for('about_Us_page') }}">ABOUT US</a> &emsp;
+                <a class="navbar-link" href="{{ url_for('Faq_page') }}">FAQ</a>
+            </p>
+            <br>
+            <a class="navbar-brand"><h6>Hotline: 09144342525</h6></a> &ensp;
+            <a class="navbar-brand"><h6>Emergency Ambulance: 09232252245</h6></a> &ensp;
+            <a class="navbar-brand"><h6>For Appointment: 09421452451</h6></a>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #1087CA;">
+    <div class="container p-2">
+        <div class="text-left">
+            {% if current_user.id >= 200 %}
+                <a class="navbar-brand" href="{{ url_for('homeD_page') }}">Home</a>
+            {% else %}
+                <a class="navbar-brand" href="{{ url_for('home_page') }}">Home</a>
+            {% endif %}
+            <a class="navbar-brand" href="{{ url_for('Available_Doctors') }}">Available Doctors</a>
+        </div>
+        {% if current_user.is_authenticated %}
+                <div class="text-right">
+                    {% if current_user.id < 200 %}
+                         <i style="color: white; font-weight: bold">Balance:</i>
+                          <i class="fas fa-coins" style="color: white; font-weight:bold"> {{ current_user.patient_budget }}  </i>
+                     {% endif %}
+                       <img id="block-1" height="50" width="50" src="https://media.discordapp.net/attachments/745242546283741224/912341174566666241/user-modified.png">
+                       <div class="dropdown show" id="block-2">
+                        <a class="btn btn-lg btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ current_user.username }}
+                        </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                {% if current_user.id >= 200 %}
+                                	<a class="dropdown-item" href="{{ url_for('doctor_profile_page') }}">Profile</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="{{ url_for('patient_profile_page') }}">Profile</a>
+                                {% endif %}
+                                <a class="dropdown-item" href="{{ url_for('logout_page') }}">Logout</a>
+                            </div>
+                        </div>
+                </div>
+        {% endif %}
+
+    </div>
+</nav>
+<div class="container">
+    <p></p>
+</div>
+
+<div class="bg-image" style="background-image: url('https://www.alfun.fr/wp-content/uploads/2017/02/title-image.jpg');
+            height: 100vh">
+    <!-- Future Content here -->
+        <br>
+        <div class="container">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">
+                        <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message }}
+                  </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</div>
+
+
+</body>
+<style>
+#block-1, #block-2
+{
+    display:inline;
+}
+
+</style>
+
+</html>

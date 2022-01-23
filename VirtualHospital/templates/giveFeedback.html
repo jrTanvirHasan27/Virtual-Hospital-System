@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Give feedback!
+{% endblock %}
+
+{% block content %}
+        <div class="container div-f">
+            <h1 class="text-center">Give your feedback to the appointed doctor!</h1>
+            <br>
+            <div style="font-family: Times New Roman" class="container div-k">
+                <h3 class="text-center"><strong>Your Name: </strong>&ensp; {{ current_user.username }}</h3>
+                <h3 class="text-center"><strong>Symptom: </strong>&ensp; {{ current_user.symptom }}</h3>
+                <h3 class="text-center"><strong>Appointed Doctor: </strong>&ensp; {{ current_user.owner.username }}</h3>
+                <h3 class="text-center"><strong>Appointed Doctor specialty: </strong>&ensp; {{ current_user.owner.clas }}</h3>
+            </div>
+
+            {% if current_user.feedback != None %}
+            <br>
+            <br>
+                    <h3 class="text-center border border-dark border-5" style="font-family: Times New Roman">
+                        <strong>Feedback: </strong> {{ current_user.feedback }}
+                    </h3>
+            <br>
+            <br>
+            <br>
+
+                 <div class="card-footer text-muted" style="text-align:center">
+                     <h2>You have already updated your feedback.</h2>
+                 </div>
+
+            {% else %}
+
+                <form method="POST" class="for-giveFeedback" style="color:black">
+                     {{ feedBackForm.hidden_tag() }}
+
+                   <div class="container p-2">
+
+                          <h4> {{ feedBackForm.feedback.label() }} {{ feedBackForm.feedback(class="feedBack-control", placeholder="Feedback", size=82) }} </h4>
+
+                   </div>
+
+                    <br>
+                    {{ feedBackForm.submit(class="btn btn-lg btn-block btn-success") }}
+
+                </form>
+
+            {% endif %}
+
+        </div>
+
+
+<style>
+      .div-f {
+      background-color: #FFFFFF;
+      color: black
+      }
+      .div-k{
+      max-width: 70%;
+      }
+
+</style>
+
+{% endblock %}

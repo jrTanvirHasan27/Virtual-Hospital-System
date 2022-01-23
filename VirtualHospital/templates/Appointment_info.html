@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Appointment doctor!
+{% endblock %}
+
+{% block content %}
+
+        <div class="container div-g">
+            <div style="font-family:Times New Roman">
+                <h2 style="text-align:center">Welcome to<br> Jahangir Basar Memorial Virtual Hospital</h2>
+            </div>
+            <br>
+            <div class="container div-1">
+
+                {% if current_user.owner_id != None %}
+
+                <table class="table table-striped table-hover" style="font-family:Times New Roman">
+                    <tr>
+                        <td> <h4>Patient Name: </h4> </td>
+                        <td>
+                            <h4> {{ current_user.username }}  </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <h4>Patient Id: </h4> </td>
+                        <td>
+                            <h4> {{ current_user.id }}  </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <h4>Appointed doctor name: </h4> </td>
+                        <td>
+                            <h4> {{ current_user.owner.username }}  </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <h4>Appointed doctor specialty: </h4></td>
+                        <td>
+                           <h4> {{ current_user.owner.clas }}  </h4>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> <h4>Suggested Medicines: </h4></td>
+                        <td>
+                           <h4> {{ current_user.medication }}  </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <h4>Dose Per Day: </h4></td>
+                        <td>
+                           <h4> {{ current_user.dose }}  </h4>
+                        </td>
+                    </tr>
+
+                </table>
+
+                {% if current_user.symptom != None %}
+
+                <table class="table table-striped table-hover" style="font-family:Times New Roman">
+                    <tr>
+                        <td>
+                            <h3>Symptom: </h3>
+                        </td>
+                        <td>
+
+                            <h3> {{ current_user.symptom }} </h3>
+
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+                <br>
+
+
+                {% else %}
+
+                <form method="POST" class="for-updateInfo" style="color:black">
+                     {{ appoint_info.hidden_tag() }}
+
+                   <div class="container p-2">
+
+                          <h4> {{ appoint_info.symptom.label() }}: {{ appoint_info.symptom(class="appoint_info-control", placeholder="Symptom", size=60) }} </h4>
+
+                   </div>
+
+                    <br>
+                    {{ appoint_info.submit(class="btn btn-lg btn-block btn-primary") }}
+
+                    <br>
+                    <br>
+
+                </form>
+
+                {% endif %}
+
+                {% else %}
+
+                <h3 class="text-center" style="font-family: Times New Roman">You have not appointed a doctor yet!</h3>
+
+                {% endif %}
+            </div>
+
+        </div>
+
+<style>
+      .div-g {
+      background-color: #FFFFFF;
+      color: black
+      }
+.div-1 {
+       max-width: 80%;
+}
+</style>
+
+{% endblock %}

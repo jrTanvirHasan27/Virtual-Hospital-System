@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   Appointed Patient List!
+{% endblock %}
+
+{% block content %}
+
+<div class="container div-g">
+    <h2 style="text-align:center">This page is for showing appointed patients!</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">Patient ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Symptoms</th>
+            <th scope="col">Medicine</th>
+            <th>Dose Per Day</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for patient in appointed_patients %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.username }}</td>
+            <td>{{ patient.email_address }}</td>
+            <td>{{ patient.symptom }}</td>
+            <td>{{ patient.medication }}</td>
+            <td>{{ patient.dose }}</td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+<style>
+      .div-g {
+      background-color: #FFFFFF;
+      color: black
+      }
+</style>
+
+{% endblock %}
